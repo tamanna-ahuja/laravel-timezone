@@ -121,8 +121,8 @@
    <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
    <option value="Asia/Yekaterinburg">(GMT+05:00) Yekaterinburg</option>
    <option value="Asia/Karachi">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
-   <option value="Asia/Calcutta">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
-   <option value="Asia/Calcutta">(GMT+05:30) Sri Jayawardenapura</option>
+   <option value="Asia/Kolkata">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+   <option value="Asia/Kolkata">(GMT+05:30) Sri Jayawardenapura</option>
    <option value="Asia/Katmandu">(GMT+05:45) Kathmandu</option>
    <option value="Asia/Almaty">(GMT+06:00) Almaty, Novosibirsk</option>
    <option value="Asia/Dhaka">(GMT+06:00) Astana, Dhaka</option>
@@ -176,7 +176,10 @@
 <script>
         $( document ).ready(function() {
             var timezone = '<?php echo $timezone; ?>';
-            $('#timezone').val(timezone)
+            console.log(timezone);
+            
+                $('#timezone').val(timezone);
+            
         });        
     </script>
 @endsection
