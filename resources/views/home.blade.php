@@ -173,6 +173,8 @@ use Illuminate\Support\Facades\Auth;
 
 <script>
     $(document).ready(function() {
+            var timezone = '<?php echo Auth::user()->timezone; ?>';
+            $('#timezone').val(timezone)
     $('.js-example-basic-multiple').select2();
 });
 </script>

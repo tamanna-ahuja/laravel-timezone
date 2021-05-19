@@ -7,6 +7,7 @@ use DateTime;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -44,11 +45,15 @@ class User extends Authenticatable
 
     }
 
-    public function getAttributeCreatedAt($data){
-        $date = new DateTime();
-        $timeZone = $date->getTimezone();
+    public function getCreatedAtAttribute($data){
+        if(Auth::guard('admins')->check()){
+            $timeZone = Auth::guard('admins')->user()->timezone;
+        }else{
+            $timeZone = "";
+        }
         
-        return Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d'), 'UTC')
-    ->setTimezone($timeZone->getName());
-    }
+        return Carbon::createFromTimestamp(strtotime($data))
+        ->timezone($timeZone)
+        ->toDateTimeString(); 
+}
 }

@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+{{$timezone}}
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -176,7 +176,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
 <script>
         $( document ).ready(function() {
-            $('#timezone').val(moment.tz.guess())
+            var timezone = '<?php echo $timezone; ?>';
+            $('#timezone').val(timezone)
         });        
     </script>
 @endsection
